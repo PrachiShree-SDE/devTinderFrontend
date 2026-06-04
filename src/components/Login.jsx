@@ -1,9 +1,72 @@
-import React from 'react'
+import React, { useState } from "react";
+import axios from "axios"
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import {useNavigate} from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
 
-export default Login
+ const [emailId, setEmailId] = useState("prachi@gmail.com");
+ const [password, setPassword] = useState("Prachi@1234");
+ const dispatch = useDispatch()
+const navigate = useNavigate();
+
+ const handleLogin = async() => {
+   try {
+    const res = await axios.post( BASE_URL+"/login",{
+    emailId,
+    password,
+    },
+    {withCredentials: true}
+);
+dispatch(addUser(res.data ));
+navigate("/")
+}catch(err){
+    console.error(err);
+}
+ }
+
+  return (
+    <div className="flex justify-center my-10">
+      <div className="card bg-base-300 w-96 shadow-sm">
+        <div className="card-body">
+          <h2 className="card-title justify-center">Login</h2>
+          <div>
+            <label className="form-control w-full max-w-xs my-2">
+              <div className="label">
+                <span className="label-text my-2">Email ID: </span>
+              </div>
+              <input
+                type="text"
+                value={emailId}
+                placeholder=""
+                className="input border-1px border-black bg-gray-700 w-full max-w-xs"
+                onChange={(e) => setEmailId(e.target.value)}
+              />
+            </label>
+
+             <label className="form-control w-full max-w-xs my-2">
+              <div className="label">
+                <span className="label-text my-2">Password</span>
+              </div>
+              <input
+                type="password"
+                value={password}
+                placeholder=""
+                className="input border-1px border-black bg-gray-700 w-full max-w-xs"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+
+          </div>
+          <div className="card-actions justify-center">
+            <button className="btn btn-primary m-2" onClick={handleLogin}>Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

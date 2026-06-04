@@ -1,5 +1,6 @@
 # DevTinder
 
+
 -Created a Vite + React application
 -Remove unecessary code and create a hello world app
 - Tailwind css installed 
@@ -19,6 +20,9 @@
 -Login and seen if data is comming properly in the store
 -NavBar should update as soon as user logs in
 -Refactor our code to add constants file + create a componenets folder
+-Should not be access other routes without login
+-If token is not present, redirect user to login page
+
 
 
 Body

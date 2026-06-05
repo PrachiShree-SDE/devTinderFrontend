@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import {Provider} from "react-redux"
 import appStore from "./utils/appStore";
 import Feed from "./components/Feed";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       </Routes>
      </BrowserRouter>
      </Provider>
+     
      {/* <NavBar/>
       <h1 className="font-bold text-blue-600 text-4xl">Hello</h1> */}
     </>

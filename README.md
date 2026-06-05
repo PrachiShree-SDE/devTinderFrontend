@@ -27,6 +27,7 @@
 -built the  user card on feed
 -Edit Profile feature 
 -Show Toast Message on save of profile
+-See all my connections
 
 
 Body

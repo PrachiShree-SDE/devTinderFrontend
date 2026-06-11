@@ -18,7 +18,7 @@ const EditProfile = ({ user }) => {
   const [showToast, setShowToast] = useState(false);
 
   const saveProfile = async () => {
-    setError(" ");
+    setError("");
     try {
       const res = await axios.put(
         BASE_URL + "/profile/edit",
